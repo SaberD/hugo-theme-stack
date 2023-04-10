@@ -24,6 +24,7 @@
     </div>
 
     {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
+    {{ $showWords := .Params.wordCount | default (.Site.Params.article.wordCount) }}
     {{ $showDate := not .Date.IsZero }}
     {{ $showFooter := or $showDate $showReadingTime }}
     {{ if $showFooter }}
@@ -42,6 +43,15 @@
                 {{ partial "helper/icon" "clock" }}
                 <time class="article-time--reading">
                     {{ T "article.readingTime" .ReadingTime }}
+                </time>
+            </div>
+        {{ end }}
+
+        {{ if $showWords }}
+            <div>
+                {{ partial "helper/icon" "report" }}
+                <time class="article-time--reading">
+                    {{ T "article.wordCount" .WordCount }}
                 </time>
             </div>
         {{ end }}
