@@ -30,10 +30,36 @@
             </div>
         {{ end }}
 
-        <div class="article-details">
+        <div class="article-details" title={{ .context.Title }}>
             <h2 class="article-title">
                 {{- .context.Title -}}
             </h2>
+            {{ $showReadingTime := true }}
+            {{ $showWords := true }}
+            {{ $showDate := not .context.Date.IsZero }}
+            {{ $showFooter := or $showDate $showReadingTime }}
+            {{ if $showFooter }}
+            <footer class="article-time">
+                {{ if $showDate }}
+                    <div>
+                        <time class="article-time--published">
+                            {{- .context.Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                        </time>
+                    </div>
+                {{ end }}
+        
+                {{ if $showReadingTime }}
+                    <div>
+                        <time class="article-time--reading">
+                            {{ T "article.readingTime" .context.ReadingTime }}
+                        </time>
+                    </div>
+                {{ end }}
+            </footer>
+            {{ end }}
+            <h3 class="article-subtitle" style="font-size:1.4rem">
+                {{- .context.Description -}}
+            </h3>
         </div>
     </a>
 </article>
