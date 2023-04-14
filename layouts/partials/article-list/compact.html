@@ -1,13 +1,34 @@
 <article>
     <a href="{{ .RelPermalink }}">
-        <div class="article-details">
+        <div class="article-details" title={{ .Description }}>
             <h2 class="article-title">
                 {{- .Title -}}
             </h2>
+            {{ $showReadingTime := true }}
+            {{ $showWords := true }}
+            {{ $showDate := not .Date.IsZero }}
             <footer class="article-time">
-                <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
-                    {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
-                </time>
+                {{ if $showDate }}
+                <div>
+                    <time datetime='{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}'>
+                        {{- .Date.Format (or .Site.Params.dateFormat.published "Jan 02, 2006") -}}
+                    </time>
+                </div>
+                {{ end }}
+                {{ if $showReadingTime }}
+                <div>
+                    <time class="article-time--reading">
+                        {{ T "article.readingTime" .ReadingTime }}
+                    </time>
+                </div>
+                {{ end }}
+                {{ if $showWords }}
+                <div>
+                    <time class="article-time--reading">
+                        {{ T "article.wordCount" .WordCount }}
+                    </time>
+                </div>
+                {{ end }}
             </footer>
         </div>
 
