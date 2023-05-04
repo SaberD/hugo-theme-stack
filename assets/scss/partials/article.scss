@@ -45,6 +45,12 @@
     }
 }
 
+.readtime-line {
+    padding: var(--small-card-padding);
+    padding-bottom: 0px;
+    margin-bottom: calc(var(--card-padding)*-1);
+}
+
 .article-details {
     display: flex;
     flex-direction: column;

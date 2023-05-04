@@ -8,6 +8,10 @@ list:
     page:
         one: "{{ .Count }} page"
         other: "{{ .Count }} pages"
+    
+    post:
+        one: "{{ .Count }} post"
+        other: "{{ .Count }} posts"
 
     section:
         other: Section

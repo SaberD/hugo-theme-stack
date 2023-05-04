@@ -3,20 +3,16 @@
         <h3 class="section-title">
             {{ if eq .Parent (.GetPage "/") }}
                 {{ T "list.section" }}
+            {{ else if eq .Parent.Title "Categories" }}
+                {{ "Category" }}
+            {{ else if eq .Parent.Title "Tags" }}
+                {{ "Tag" }}
             {{ else }}
                 {{ .Parent.Title }}
             {{ end }}
         </h3>
 
         <div class="section-card">
-            <div class="section-details">
-                <h3 class="section-count">{{ T "list.page" (len .Pages) }}</h3>
-                <h1 class="section-term">{{ .Title }}</h1>
-                {{ with .Params.description }}
-                    <h2 class="section-description">{{ . }}</h2>
-                {{ end }}
-            </div>
-    
             {{- $image := partialCached "helper/image" (dict "Context" . "Type" "section") .RelPermalink "section" -}}
             {{ if $image.exists }}
                 <div class="section-image">
@@ -31,16 +27,28 @@
                             {{- $Width = $thumbnail.Width -}}
                             {{- $Height = $thumbnail.Height -}}
                         {{- end -}}
-                        
-                        <img src="{{ $Permalink }}" 
-                            width="{{ $Width }}"
-                            height="{{ $Height }}" 
-                            loading="lazy">
+                        <a href="{{ $image.resource }}" title="open image">
+                            <img src="{{ $Permalink }}"
+                                width="{{ $Width }}"
+                                height="{{ $Height }}" 
+                                loading="lazy"
+                            />
+                        </a>
                     {{ else }}
-                        <img src="{{ $image.permalink }}" loading="lazy" />
+                        <img 
+                            src="{{ $image.permalink }}" 
+                            loading="lazy"
+                        />
                     {{ end }}
                 </div>
             {{ end }}
+            <div class="section-details">
+                <h1 class="section-term">{{ .Title }}</h1>
+                {{ with .Params.description }}
+                    <h2 class="section-description">{{ . }}</h2>
+                {{ end }}
+                <h3 class="section-count">{{ T "list.post" (len .Pages) }}</h3>
+            </div>
         </div>
     </header>
 
