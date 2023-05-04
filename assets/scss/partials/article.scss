@@ -140,13 +140,14 @@
 
 /* Compact style article list */
 .article-list--compact {
+    max-width: 800px;
     border-radius: var(--card-border-radius);
     box-shadow: var(--shadow-l1);
     background-color: var(--card-background);
-    --image-size: 50px;
+    --image-size: 80px;
 
     @include respond(md) {
-        --image-size: 60px;
+        --image-size: 80px;
     }
 
     article {
