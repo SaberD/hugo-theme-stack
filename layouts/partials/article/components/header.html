@@ -25,8 +25,6 @@
                         loading="lazy"
                         alt="Featured image of post {{ .Title }}" 
                     />
-                {{ else }}
-                    <img src="{{ $image.permalink }}" loading="lazy" alt="Featured image of post {{ .Title }}" />
                 {{ end }}
             </a>
         </div>
