@@ -48,7 +48,7 @@
 .readtime-line {
     padding: var(--small-card-padding);
     padding-bottom: 0px;
-    margin-bottom: calc(var(--card-padding)*-1);
+    margin-bottom: -20px;
 }
 
 .article-details {
@@ -84,6 +84,12 @@
     line-height: 1.5;
     margin: 0;
     font-size: 1.75rem;
+    max-height: 4.5em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
     @include respond(xl) {
         font-size: 2rem;
     }
@@ -92,7 +98,7 @@
 .article-title-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 2px;
 }
 
 .article-time,

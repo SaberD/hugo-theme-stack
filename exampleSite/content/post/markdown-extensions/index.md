@@ -2,7 +2,7 @@
 author = "Hugo Authors"
 title = "Markdown Extensions and Shortcodes"
 date = "2023-03-16"
-description = "Guide to Hugo's Markdown extensions and shortcode usage"
+description = "Guide to Hugo's Markdown extensions and shortcode usage with a dash of extra long lines. this is an extremely long subtiutle to break the formatting and sending the message of never going to slow and fast and stuff. writing this is too long again. Lorem and impsum and other things that are not words. this is an extremely long subtiutle to break the formatting and sending the message of never going to slow and fast and stuff. writing this is too long again. Lorem and impsum and other things that are not words. this is an extremely long subtiutle to break the formatting and sending the message of never going to slow and fast and stuff. writing this is too long again. Lorem and impsum and other things that are not words."
 tags = [
     "markdown",
     "shortcodes",

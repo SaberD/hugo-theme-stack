@@ -2,7 +2,7 @@
 author = "Hugo Authors"
 title = "Advanced Markdown Features"
 date = "2023-03-15"
-description = "A guide to advanced Markdown features and formatting"
+description = "A guide to advanced Markdown features and formatting."
 tags = [
     "markdown",
     "syntax",
