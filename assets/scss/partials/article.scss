@@ -84,14 +84,33 @@
     line-height: 1.5;
     margin: 0;
     font-size: 1.75rem;
-    max-height: 4.5em;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    
+    // Only truncate in article lists and related articles
+    .article-list &,
+    .related-content &,
+    .article-list--compact & {
+        max-height: 4.5em;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    // Specific styling for related contents
+    .related-content &,
+    .article-list--compact & {
+        font-size: 1.4rem;
+        max-height: 3em;
+        -webkit-line-clamp: 2;
+    }
 
     @include respond(xl) {
         font-size: 2rem;
+        
+        .related-content &,
+        .article-list--compact & {
+            font-size: 1.5rem;
+        }
     }
 }
 
