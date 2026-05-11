@@ -4,12 +4,13 @@
     <span class="cite"><span>― </span>
         {{- if .Get "author" -}}
         <span>
-            {{- .Get "author" -}}{{- if .Get "source" -}}, {{ end -}}
+            {{- if .Get "url" -}}<a class="link" href="{{ .Get "url" }}">{{ .Get "author" }}</a>{{- else -}}{{ .Get "author" }}{{- end -}}
+            {{- if .Get "source" -}}, {{ end -}}
         </span>
         {{- end -}}
-        {{- with .Get "url" -}}<a href="{{ . }}">{{- end -}}
+        {{- if .Get "source" -}}
             <cite>{{ .Get "source" }}</cite>
-        {{- if .Get "url" -}}</a>{{- end -}}
+        {{- end -}}
     </span>
     {{- end -}}
 </blockquote>

@@ -1,0 +1,29 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.202.3/containers/hugo
+{
+	"name": "Hugo",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+	"features": {
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "1.23.4"
+		},
+		"ghcr.io/devcontainers/features/hugo:1": {
+			"version": "0.111.3",
+			"extended": true
+		}
+	},
+	"forwardPorts": [
+		1313
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"budparr.language-hugo-vscode",
+				"davidanson.vscode-markdownlint",
+				"netlify.netlify-vscode",
+				"mhutchie.git-graph",
+				"golang.go"
+			]
+		}
+	}
+}
