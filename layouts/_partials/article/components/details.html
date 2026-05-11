@@ -51,6 +51,12 @@
                         {{ T "article.readingTime" $Page.ReadingTime }}
                     </time>
                 {{ end }}
+
+                {{ if $Page.WordCount }}
+                    <span class="article-word-count">
+                        {{ T "article.wordCount" $Page.WordCount }}
+                    </span>
+                {{ end }}
             </div>
         {{ end }}
 

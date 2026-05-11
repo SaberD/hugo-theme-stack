@@ -4,7 +4,13 @@
     {{- $image := partial "helper/image" (dict "Image" $Page.Params.image "Resources" $Page.Resources "Context" $Page) -}}
     {{ if $image }}
     <div class="article-image">
+        {{ if $IsList }}
         <a href="{{ $Page.RelPermalink }}">
+        {{ else }}
+        <a class="image-link" href="{{ $image.Permalink }}"
+            {{ with $image.Width }}data-pswp-width="{{ . }}"{{ end }}
+            {{ with $image.Height }}data-pswp-height="{{ . }}"{{ end }}>
+        {{ end }}
             {{ partial "helper/responsive-image" (dict
                 "Resource" $image.Resource
                 "Widths" (cond $Page.Site.Params.ImageProcessing.Content.Enabled $Page.Site.Params.ImageProcessing.Content.Widths nil)

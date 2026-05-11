@@ -9,6 +9,7 @@
         flex-direction: column;
         @include card-style;
         overflow: hidden;
+        position: relative;
 
         transition: box-shadow 0.3s ease;
 
@@ -56,6 +57,22 @@
 
         &:hover {
             opacity: 0.8;
+        }
+
+        /* Stretch link to cover the whole card in list view */
+        .article-list & {
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+            }
+        }
+
+        /* Title is not a link in single post view */
+        .main-article & {
+            pointer-events: none;
+            cursor: default;
+            text-decoration: none;
         }
     }
 }
@@ -133,6 +150,14 @@
 }
 
 .article-category,
+.article-tags,
+.article-translations {
+    position: relative;
+    z-index: 1;
+    align-self: flex-start;
+}
+
+.article-category,
 .article-tags {
     display: flex;
     gap: var(--spacing-sm);
@@ -145,11 +170,14 @@
         border-radius: var(--tag-border-radius);
         display: inline-block;
         font-size: 1.4rem;
-        transition: background-color 0.5s ease;
+        transition: background-color 0.5s ease, opacity 0.2s ease;
+        position: relative;
+        z-index: 1;
 
         &:hover {
             color: var(--accent-color-text);
             background-color: var(--accent-color-darker);
+            opacity: 0.85;
         }
     }
 }
