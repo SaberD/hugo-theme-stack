@@ -48,7 +48,13 @@
             <description>{{ (or .Description .Summary) | transform.XMLEscape | safeHTML }}</description>
             {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
             {{- if $image -}}
-            <media:content medium="image" url="{{ $image.Permalink | absURL }}" />
+            {{- $imgURL := $image.Permalink | absURL -}}
+            {{- $ext := path.Ext $imgURL | lower -}}
+            {{- $mime := "image/jpeg" -}}
+            {{- if eq $ext ".png" }}{{- $mime = "image/png" -}}{{- end -}}
+            {{- if eq $ext ".gif" }}{{- $mime = "image/gif" -}}{{- end -}}
+            {{- if eq $ext ".webp" }}{{- $mime = "image/webp" -}}{{- end -}}
+            <media:content medium="image" type="{{ $mime }}" url="{{ $imgURL }}" />
             {{- end -}}
         </item>
         {{- end -}}
